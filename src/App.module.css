@@ -1,0 +1,77 @@
+/* src/App.module.css */
+.appWrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    position: sticky; /* Fissa l'header in alto */
+    top: 0;
+    z-index: 50;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px); /* Effetto vetro */
+    -webkit-backdrop-filter: blur(10px); /* Supporto Safari */
+    box-shadow: 0 1px 2px var(--shadow-color-light);
+    padding: 0.75rem 0; /* 12px top/bottom */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700; /* Bold */
+    color: var(--text-color);
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 1.5rem; /* Spazio tra i link */
+  }
+  
+  .navLink {
+      color: var(--secondary-color);
+      font-weight: 500;
+      transition: color 0.2s ease;
+  }
+  .navLink:hover,
+  .navLinkActive { /* Stile per link attivo (da implementare con NavLink) */
+      color: var(--primary-color);
+      text-decoration: none;
+  }
+  
+  
+  .mainContent {
+    flex-grow: 1; /* Fa sì che il main occupi lo spazio rimanente */
+    padding-top: 2rem; /* Spazio sotto l'header */
+    padding-bottom: 4rem; /* Spazio sopra il footer */
+  }
+  
+  .footer {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.875rem; /* 14px */
+    color: var(--footer-text);
+    border-top: 1px solid var(--card-border); /* Linea sottile sopra il footer */
+    margin-top: auto; /* Spinge il footer in basso se il contenuto è poco */
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .themeToggle {
+      /* Stile base definito in index.css, qui possiamo personalizzare */
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      border: 1px solid var(--card-border);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border-radius: 6px;
+      margin-left: 1rem; /* Spazio dal logo/link */
+  }
+  .themeToggle:hover {
+      border-color: var(--secondary-color);
+  }

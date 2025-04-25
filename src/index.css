@@ -1,68 +1,122 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* src/index.css - Stili Globali */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Font stack moderno */
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Variabili CSS per i temi */
+:root {
+  --bg-color: #ffffff; /* Bianco puro */
+  --text-color: #111827; /* Grigio scuro quasi nero */
+  --primary-color: #2563eb; /* Blu */
+  --secondary-color: #6b7280; /* Grigio medio */
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb; /* Grigio chiaro */
+  --header-bg: rgba(255, 255, 255, 0.9); /* Bianco con trasparenza per effetto vetro */
+  --footer-text: var(--secondary-color);
+  --shadow-color-light: rgba(0, 0, 0, 0.05);
+  --shadow-color-medium: rgba(0, 0, 0, 0.1);
+  --link-color: var(--primary-color);
+
+  /* Aggiungiamo variabili per la palette scura */
+  --bg-color-dark: #121212; /* Nero leggermente off-black */
+  --text-color-dark: #e5e7eb; /* Grigio chiaro */
+  --primary-color-dark: #60a5fa; /* Blu più chiaro */
+  --secondary-color-dark: #9ca3af; /* Grigio più chiaro */
+  --card-bg-dark: #1f1f1f; /* Grigio scuro */
+  --card-border-dark: #374151; /* Grigio più scuro */
+  --header-bg-dark: rgba(31, 31, 31, 0.9); /* Grigio scuro trasparente */
+  --footer-text-dark: var(--secondary-color-dark);
+  --shadow-color-light-dark: rgba(255, 255, 255, 0.05);
+  --shadow-color-medium-dark: rgba(255, 255, 255, 0.1);
+  --link-color-dark: var(--primary-color-dark);
 }
 
+/* Sovrascrivi le variabili quando body ha classe 'dark' */
+body.dark {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --primary-color: var(--primary-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --card-bg: var(--card-bg-dark);
+  --card-border: var(--card-border-dark);
+  --header-bg: var(--header-bg-dark);
+  --footer-text: var(--footer-text-dark);
+  --shadow-color-light: var(--shadow-color-light-dark);
+  --shadow-color-medium: var(--shadow-color-medium-dark);
+  --link-color: var(--link-color-dark);
+}
+
+/* Stili generici */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+   width: 100%;
+   max-width: 1140px;
+   margin-left: auto;
+   margin-right: auto;
+   padding-left: 1rem;
+   padding-right: 1rem;
+}
+
+/* Stile base per bottoni (può essere sovrascritto dai moduli) */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Stile per un bottone primario generico */
+.button-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+.button-primary:hover {
+    opacity: 0.9; /* Semplice effetto hover */
+}
+
+/* Stile per un bottone secondario/outline */
+.button-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border-color: var(--card-border);
+}
+.button-secondary:hover {
+     background-color: var(--secondary-color);
+     color: var(--card-bg); /* O un colore contrastante */
+     border-color: var(--secondary-color);
+}
+
+/* Helpers per layout (se non vogliamo usare moduli ovunque) */
+.text-center { text-align: center; }
+.margin-bottom-1 { margin-bottom: 0.25rem; }
+.margin-bottom-2 { margin-bottom: 0.5rem; }
+.margin-bottom-4 { margin-bottom: 1rem; }
+.margin-bottom-8 { margin-bottom: 2rem; }
+/* ... altri helper se utili ... */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
