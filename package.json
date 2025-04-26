@@ -2,7 +2,7 @@
   "name": "mio-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://yurilux.github.io/mio-portfolio",
+  "homepage": "https://yurilux.github.io/mio-portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",
