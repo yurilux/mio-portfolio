@@ -18,6 +18,7 @@ body {
   --bg-color: #ffffff; /* Bianco puro */
   --text-color: #111827; /* Grigio scuro quasi nero */
   --primary-color: #2563eb; /* Blu */
+  --primary-color-rgb: 37, 99, 235;
   --secondary-color: #6b7280; /* Grigio medio */
   --card-bg: #ffffff;
   --card-border: #e5e7eb; /* Grigio chiaro */
@@ -26,6 +27,7 @@ body {
   --shadow-color-light: rgba(0, 0, 0, 0.05);
   --shadow-color-medium: rgba(0, 0, 0, 0.1);
   --link-color: var(--primary-color);
+  
 
   /* Aggiungiamo variabili per la palette scura */
   --bg-color-dark: #121212; /* Nero leggermente off-black */
@@ -46,6 +48,7 @@ body.dark {
   --bg-color: var(--bg-color-dark);
   --text-color: var(--text-color-dark);
   --primary-color: var(--primary-color-dark);
+  --primary-color-rgb: 96, 165, 250;
   --secondary-color: var(--secondary-color-dark);
   --card-bg: var(--card-bg-dark);
   --card-border: var(--card-border-dark);

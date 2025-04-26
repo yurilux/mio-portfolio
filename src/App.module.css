@@ -1,77 +1,176 @@
 /* src/App.module.css */
+
+/* --- Layout Base --- */
 .appWrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header --- */
+.header {
+  position: sticky; /* Fissa l'header in alto */
+  top: 0;
+  z-index: 50;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(10px); /* Effetto vetro */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 2px var(--shadow-color-light);
+  padding: 0.75rem 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav { /* Contenitore interno all'header (con classe 'container' globale) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none; /* Rimuove sottolineatura link logo */
+  flex-shrink: 0; /* Evita che il logo si restringa troppo */
+}
+
+/* --- Elementi a Destra dell'Header (Contenitori per Desktop/Mobile) --- */
+.headerRightDesktop {
+  display: none; /* Nascosto di default (mobile first) */
+  align-items: center;
+  gap: 1.5rem; /* Spazio tra nav e bottone tema */
+}
+.headerRightMobile {
+  display: flex; /* Visibile di default (mobile first) */
+  align-items: center;
+  gap: 0.8rem; /* Spazio tra bottone tema e hamburger */
+}
+
+/* --- Navigazione Desktop --- */
+.navLinks { /* Contenitore Nav Desktop */
+  display: flex; /* Già presente, ma lo confermiamo per desktop */
+  gap: 1.5rem; /* Spazio tra i link desktop */
+}
+
+.navLink { /* Stile singolo link (comune a desktop e mobile) */
+  color: var(--secondary-color);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  text-decoration: none; /* Rimuove sottolineatura */
+  padding: 0.3rem 0; /* Leggero padding verticale per area cliccabile */
+  white-space: nowrap; /* Evita che i link vadano a capo facilmente */
+}
+.navLink:hover,
+.navLinkActive { /* Stile link attivo/hover */
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.navLinkActive {
+  font-weight: 600; /* Rende attivo leggermente più bold */
+   /* Aggiungi un bordo sotto o altro effetto se vuoi */
+   /* border-bottom: 2px solid var(--primary-color); */
+}
+
+
+/* --- Bottone Tema --- */
+.themeToggle {
+  padding: 0.4rem 0.6rem; /* Leggermente più piccolo per solo icona */
+  font-size: 1rem; /* Dimensione icona luna/sole */
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 1; /* Per centrare meglio l'icona */
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.themeToggle:hover {
+  border-color: var(--secondary-color);
+  background-color: rgba(0,0,0,0.03);
+}
+body.dark .themeToggle:hover {
+   background-color: rgba(255,255,255,0.05);
+}
+
+/* --- Bottone Hamburger --- */
+.hamburgerButton {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.4rem; /* Padding per area cliccabile */
+  display: flex; /* Per centrare SVG */
+  align-items: center;
+  justify-content: center;
+}
+.hamburgerButton svg { /* Stile per l'SVG dell'hamburger/X */
+  width: 24px;
+  height: 24px;
+}
+
+
+/* --- Menu Mobile --- */
+.mobileNav {
+  /* Stile contenitore menu a tendina */
+  /* Viene mostrato/nascosto da JS/Framer Motion, non serve display: none */
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+  /* Aggiungiamo padding direttamente qui invece che nel contenitore header */
+  padding: 1rem 0;
+  /* Occupa tutta la larghezza disponibile sotto l'header */
+  /* Position absolute potrebbe essere un'alternativa se si vuole sovrapporre */
+}
+body.dark .mobileNav {
+   background-color: var(--card-bg-dark);
+}
+
+.mobileNav .navLink { /* Stile specifico link mobile */
+  display: block; /* Occupa tutta larghezza */
+  text-align: center;
+  padding: 0.8rem 1rem; /* Padding più generoso */
+  font-size: 1.1rem;
+  color: var(--text-color); /* Usa colore testo principale */
+  border-bottom: 1px solid var(--card-border); /* Separatore tra link */
+}
+.mobileNav .navLink:last-child {
+  border-bottom: none; /* Rimuovi bordo per ultimo elemento */
+}
+.mobileNav .navLinkActive { /* Stile link attivo mobile */
+  color: var(--primary-color);
+  font-weight: 600;
+  background-color: rgba(var(--primary-color-rgb, 37, 99, 235), 0.05); /* Sfondo leggero */
+}
+body.dark .mobileNav .navLinkActive {
+   background-color: rgba(var(--primary-color-rgb, 96, 165, 250), 0.1);
+}
+
+
+/* --- Main e Footer (invariati da prima, ma verificati) --- */
+.mainContent {
+  flex-grow: 1;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--footer-text);
+  border-top: 1px solid var(--card-border);
+  margin-top: auto;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* --- Media Query per Desktop --- */
+/* Scegli un breakpoint ragionevole, es. 768px (tablet in landscape) o 992px (laptop piccoli) */
+@media (min-width: 768px) {
+  .headerRightDesktop {
+      display: flex; /* Mostra contenitore desktop */
   }
-  
-  .header {
-    position: sticky; /* Fissa l'header in alto */
-    top: 0;
-    z-index: 50;
-    background-color: var(--header-bg);
-    backdrop-filter: blur(10px); /* Effetto vetro */
-    -webkit-backdrop-filter: blur(10px); /* Supporto Safari */
-    box-shadow: 0 1px 2px var(--shadow-color-light);
-    padding: 0.75rem 0; /* 12px top/bottom */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  .headerRightMobile {
+      display: none; /* Nascondi contenitore mobile (incluso hamburger) */
   }
-  
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.25rem; /* 20px */
-    font-weight: 700; /* Bold */
-    color: var(--text-color);
-  }
-  
-  .navLinks {
-    display: flex;
-    gap: 1.5rem; /* Spazio tra i link */
-  }
-  
-  .navLink {
-      color: var(--secondary-color);
-      font-weight: 500;
-      transition: color 0.2s ease;
-  }
-  .navLink:hover,
-  .navLinkActive { /* Stile per link attivo (da implementare con NavLink) */
-      color: var(--primary-color);
-      text-decoration: none;
-  }
-  
-  
-  .mainContent {
-    flex-grow: 1; /* Fa sì che il main occupi lo spazio rimanente */
-    padding-top: 2rem; /* Spazio sotto l'header */
-    padding-bottom: 4rem; /* Spazio sopra il footer */
-  }
-  
-  .footer {
-    padding: 2rem 0;
-    text-align: center;
-    font-size: 0.875rem; /* 14px */
-    color: var(--footer-text);
-    border-top: 1px solid var(--card-border); /* Linea sottile sopra il footer */
-    margin-top: auto; /* Spinge il footer in basso se il contenuto è poco */
-    transition: border-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .themeToggle {
-      /* Stile base definito in index.css, qui possiamo personalizzare */
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
-      border: 1px solid var(--card-border);
-      background-color: var(--card-bg);
-      color: var(--text-color);
-      border-radius: 6px;
-      margin-left: 1rem; /* Spazio dal logo/link */
-  }
-  .themeToggle:hover {
-      border-color: var(--secondary-color);
-  }
+  /* Non serve nascondere .mobileNav con CSS perché viene gestito da JS/AnimatePresence */
+}

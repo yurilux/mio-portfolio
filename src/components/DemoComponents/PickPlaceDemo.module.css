@@ -1,0 +1,227 @@
+/* src/components/DemoComponents/PickPlaceDemo.module.css */
+
+.demoContainer {
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px var(--shadow-color-light);
+    font-size: 0.9rem; /* Dimensione base per la demo */
+  }
+  
+  .demoTitle {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .controls {
+    display: flex;
+    flex-wrap: wrap; /* Va a capo su mobile */
+    gap: 1rem;
+    align-items: flex-end; /* Allinea elementi in basso */
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--card-border);
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Occupa spazio */
+    min-width: 180px;
+  }
+  
+  .formGroup label {
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+  
+  .formGroup select {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+  }
+   .formGroup select:disabled {
+       opacity: 0.6;
+       cursor: not-allowed;
+   }
+  
+  .controlButton {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap; /* Evita che il testo vada a capo */
+  }
+  
+  .controlButton:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+  
+  .controlButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .fileName {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .fileName span {
+     font-weight: 600;
+     color: var(--text-color);
+  }
+  
+  
+  /* Pipeline */
+  .pipeline {
+    display: flex;
+    flex-wrap: wrap; /* Va a capo su schermi piccoli */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background-color: rgba(0,0,0,0.02);
+    border-radius: 6px;
+  }
+   body.dark .pipeline {
+       background-color: rgba(255,255,255,0.05);
+   }
+  
+  .step {
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+     white-space: nowrap;
+  }
+  
+  .arrow {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin: 0 0.2rem;
+  }
+  
+  /* Stati degli Step */
+  .stepIdle {
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    border-color: var(--card-border);
+     opacity: 0.7;
+  }
+  .stepActive {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: 600;
+     box-shadow: 0 0 5px rgba(var(--primary-color-rgb, 37, 99, 235), 0.5);
+  }
+  .stepCompleted {
+    background-color: #27ae60; /* Verde successo */
+    color: white;
+    border-color: #27ae60;
+  }
+  .stepErrorCurrent, .stepErrorPrevious {
+    background-color: #e74c3c; /* Rosso errore */
+    color: white;
+    border-color: #e74c3c;
+  }
+   .stepErrorPrevious {
+       opacity: 0.8; /* Leggermente meno evidente se errore è dopo */
+   }
+  
+  
+  /* Progress Bar */
+  .progressContainer {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+  }
+  .progressBarOuter {
+      flex-grow: 1;
+      height: 10px;
+      background-color: var(--card-border);
+      border-radius: 5px;
+      overflow: hidden;
+  }
+  .progressBarInner {
+      height: 100%;
+      width: 0%; /* Controllato da inline style */
+      background-color: var(--primary-color);
+      border-radius: 5px;
+      transition: width 0.1s linear; /* Transizione fluida */
+  }
+  .progressText {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--secondary-color);
+      min-width: 30px; /* Spazio per 100% */
+      text-align: right;
+  }
+  
+  /* Messaggi */
+  .errorMessage, .successMessage {
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      text-align: center;
+  }
+  .errorMessage {
+    background-color: rgba(231, 76, 60, 0.1); /* Sfondo rosso leggero */
+    color: #c0392b; /* Testo rosso scuro */
+    border: 1px solid #e74c3c;
+  }
+  .successMessage {
+    background-color: rgba(39, 174, 96, 0.1); /* Sfondo verde leggero */
+    color: #218c54; /* Testo verde scuro */
+    border: 1px solid #27ae60;
+  }
+  
+  /* Output Area */
+  .outputArea {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--card-border);
+  }
+  .outputArea h5 {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .outputArea pre {
+    background-color: rgba(0,0,0,0.03);
+    border-radius: 4px;
+    padding: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    overflow-x: auto; /* Scroll se testo lungo */
+    max-height: 300px; /* Limita altezza e scroll verticale */
+     color: var(--text-color);
+  }
+   body.dark .outputArea pre {
+        background-color: rgba(255,255,255,0.05);
+   }

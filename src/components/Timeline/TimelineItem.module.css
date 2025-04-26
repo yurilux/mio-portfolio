@@ -1,0 +1,137 @@
+/* src/components/Timeline/TimelineItem.module.css */
+
+.timelineItemWrapper {
+    /* Contenitore per motion.div, gestisce posizionamento L/R */
+    width: 100%;
+    display: flex;
+    position: relative; /* Per la linea e allineamento */
+    margin-bottom: 1rem; /* Spazio tra gli item */
+  }
+  
+  /* Stili comuni per la card interna */
+  .itemContent {
+    padding: 1rem 1.25rem; /* Più padding laterale */
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 5px var(--shadow-color-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 100%; /* Occupa tutto il wrapper su mobile */
+    cursor: pointer; /* Indica che è cliccabile */
+  }
+  
+  .timelineItemWrapper:hover .itemContent {
+    transform: translateY(-3px); /* Leggero sollevamento all'hover */
+    box-shadow: 0 6px 12px var(--shadow-color-medium);
+    border-color: var(--primary-color); /* Evidenzia il bordo all'hover */
+  }
+  
+  /* Stili per l'allineamento su schermi grandi */
+  @media (min-width: 768px) { /* md breakpoint */
+    .timelineItemWrapper {
+      width: calc(50% - 2rem); /* Metà larghezza meno spazio per la linea */
+      margin-bottom: 2rem; /* Più spazio verticale su desktop */
+    }
+  
+    .alignRight {
+      /* Sposta l'intero wrapper a destra */
+      margin-left: calc(50% + 2rem);
+      justify-content: flex-start; /* Allinea contenuto a sx nel wrapper */
+    }
+  
+    .alignLeft {
+      /* Sposta l'intero wrapper a sinistra */
+      margin-right: calc(50% + 2rem);
+      justify-content: flex-end; /* Allinea contenuto a dx nel wrapper */
+       /* L'item stesso occupa width 100% del wrapper */
+    }
+  
+     /* Aggiungiamo le "frecce" che puntano verso la linea centrale */
+    .itemContent::before {
+      content: '';
+      position: absolute;
+      top: 20px; /* All'altezza circa dell'icona/titolo */
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 10px 8px 0; /* Triangolo che punta a destra */
+      border-color: transparent var(--card-border) transparent transparent;
+      transition: border-color 0.3s ease;
+    }
+  
+    .alignLeft .itemContent::before {
+      right: -10px; /* Posiziona a destra della card */
+      border-width: 8px 0 8px 10px; /* Triangolo che punta a sinistra */
+      border-color: transparent transparent transparent var(--card-border);
+    }
+     .alignRight .itemContent::before {
+      left: -10px; /* Posiziona a sinistra della card */
+       /* La forma di default punta già a destra */
+    }
+  
+    /* Cambia colore freccia all'hover */
+     .timelineItemWrapper:hover .itemContent::before {
+         border-color: transparent var(--primary-color) transparent transparent; /* Punta a dx */
+     }
+      .timelineItemWrapper.alignLeft:hover .itemContent::before {
+           border-color: transparent transparent transparent var(--primary-color); /* Punta a sx */
+     }
+  
+  } /* Fine @media */
+  
+  
+  .itemLink {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Rimuoviamo l'hover sul titolo specifico, l'hover è su tutta la card */
+  /* .itemLink:hover .itemTitle { text-decoration: underline; } */
+  
+  .itemHeader {
+    display: flex;
+    align-items: flex-start; /* Allinea in alto se descrizione è lunga */
+    margin-bottom: 0.75rem;
+  }
+  
+  .itemIcon {
+    font-size: 1.5rem;
+    line-height: 1.2; /* Aggiusta l'altezza di riga */
+    margin-right: 0.8rem;
+    margin-top: 2px; /* Leggero aggiustamento verticale */
+    color: var(--primary-color); /* Diamo colore all'icona */
+    flex-shrink: 0; /* Evita che l'icona si restringa */
+  }
+  
+  .itemHeaderText {
+     flex-grow: 1;
+  }
+  
+  .itemTitle {
+    font-size: 1.15rem; /* Leggermente più grande */
+    font-weight: 600;
+    color: var(--text-color); /* Usa colore testo base */
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+  
+  .itemSource { /* Azienda/Università/Categoria */
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
+  }
+  
+  .itemPeriod {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    text-transform: uppercase; /* Stile periodo */
+    letter-spacing: 0.5px;
+  }
+  
+  .itemDescription {
+    font-size: 0.95rem;
+    color: var(--secondary-color); /* Usiamo secondary per la descrizione */
+    line-height: 1.5;
+  }

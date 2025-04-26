@@ -1,0 +1,50 @@
+/* src/components/Timeline/Timeline.module.css */
+
+.timelineSection {
+    padding: 3rem 0; /* Più padding verticale */
+    position: relative;
+    overflow-x: hidden; /* Evita scroll orizzontale causato da animazioni x */
+  }
+  
+  .timelineTitle {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem; /* Più spazio sotto il titolo */
+    color: var(--text-color);
+  }
+  
+  .timelineContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra gli item su mobile */
+    /* Container viene aggiunto in App.jsx o HomePage.jsx per padding laterale */
+  }
+  
+  /* Linea verticale centrale */
+  .timelineLine {
+    display: none; /* Nascosta su mobile */
+    position: absolute;
+    left: 50%;
+    top: 10px; /* Inizia appena sotto il primo elemento */
+    bottom: 10px; /* Finisce appena sopra l'ultimo */
+    width: 3px; /* Sottile ma visibile */
+    background: linear-gradient(to bottom, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transform: translateX(-50%);
+    z-index: -1; /* Dietro gli items */
+    border-radius: 2px;
+    box-shadow: 0 0 5px var(--primary-color); /* Leggero glow */
+  }
+  
+  /* Mostra linea su schermi grandi */
+  @media (min-width: 768px) {
+    .timelineLine {
+      display: block;
+    }
+     /* Su desktop, il container non deve più centrare gli items,
+        ci pensa già il CSS di TimelineItem con margin L/R */
+     .timelineContainer {
+        align-items: stretch; /* O rimuovi align-items */
+     }
+  }

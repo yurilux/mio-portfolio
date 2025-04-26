@@ -1,0 +1,236 @@
+/* src/components/DemoComponents/RiverMonitorDemo.module.css */
+
+.demoContainer {
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px var(--shadow-color-light);
+    font-size: 0.9rem;
+  }
+  
+  .demoTitle {
+    text-align: center;
+    margin-bottom: 2rem; /* Più spazio */
+    color: var(--primary-color);
+    font-size: 1.3rem; /* Leggermente più grande */
+    font-weight: 600;
+  }
+  
+  /* Layout a 3 colonne */
+  .layoutGrid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack su mobile */
+    gap: 2rem; /* Spazio tra le colonne/righe */
+  }
+  
+  @media (min-width: 992px) { /* Da large in su, 3 colonne */
+    .layoutGrid {
+      grid-template-columns: 1fr 0.6fr 1fr; /* Input | Centro | Output */
+      align-items: start; /* Allinea in alto */
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) { /* Su tablet, 2 colonne? */
+      .layoutGrid {
+           grid-template-columns: 1fr 1fr; /* Input | Centro + Output sotto? */
+      }
+       .centerColumn { grid-column: 1 / 2; grid-row: 2 / 3; } /* Sposta centro sotto input */
+       .outputColumn { grid-column: 2 / 3; grid-row: 1 / 3; } /* Output occupa tutta colonna dx */
+  }
+  
+  
+  /* Colonna Input */
+  .inputColumn h5 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+  }
+  
+  .sliderGroup, .inputGroup {
+    margin-bottom: 1.5rem;
+  }
+  .sliderGroup label, .inputGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+  .slider {
+    width: 100%;
+    cursor: pointer;
+     accent-color: var(--primary-color); /* Colora lo slider */
+  }
+  .sliderLabels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--secondary-color);
+      margin-top: 0.25rem;
+      padding: 0 5px; /* Leggero padding per allineare */
+  }
+  .numberInput {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+  }
+  
+  /* Colonna Centrale */
+  .centerColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra verticalmente nel suo spazio */
+    padding-top: 2rem; /* Spazio sopra su desktop */
+  }
+  .esp32Box {
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background-color: rgba(var(--primary-color-rgb, 37, 99, 235), 0.05); /* Sfondo leggero blu */
+    position: relative; /* Per posizionare buzzer */
+     min-width: 150px;
+  }
+   body.dark .esp32Box {
+       background-color: rgba(var(--primary-color-rgb, 96, 165, 250), 0.1);
+   }
+  
+  .espIcon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+  .esp32Box p { margin: 0.2rem 0; font-size: 0.85rem; color: var(--secondary-color); }
+  .statusIndicator {
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-weight: bold;
+      color: white;
+      transition: background-color 0.3s ease;
+  }
+  .buzzerIcon {
+      position: absolute;
+      top: -15px; /* Posiziona sopra */
+      right: -10px;
+      font-size: 1.8rem;
+      /* Animazione gestita da framer-motion */
+  }
+  
+  
+  /* Colonna Output */
+  .outputColumn {
+     display: flex;
+     flex-direction: column;
+     gap: 1.5rem; /* Spazio tra box output */
+  }
+  .outputBox {
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 1rem;
+      background-color: rgba(0,0,0,0.01);
+  }
+   body.dark .outputBox {
+       background-color: rgba(255,255,255,0.03);
+   }
+  
+  .outputTitle {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-color);
+  }
+  .outputTitle span { margin-right: 0.5em; } /* Spazio icona */
+  
+  /* Stili Web UI */
+  .webData {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+  }
+  .webData span:first-child { color: var(--secondary-color); }
+  .webAlertBadge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      color: white;
+      font-weight: 500;
+      margin-left: 0.5rem;
+      transition: background-color 0.3s ease;
+  }
+  
+  /* Stili Telegram */
+  .telegramChat {
+      height: 150px; /* Altezza fissa per scroll */
+      overflow-y: auto;
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 0.5rem;
+      margin-bottom: 0.8rem;
+      background-color: var(--bg-color);
+      font-size: 0.8rem;
+  }
+  .chatMessage {
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.4rem;
+      max-width: 85%;
+      word-wrap: break-word;
+  }
+  .chatMessage.bot {
+      background-color: #e9ecef; /* Grigio chiaro bot */
+      color: #333;
+      margin-right: auto; /* Allinea a sinistra */
+  }
+   body.dark .chatMessage.bot {
+       background-color: #3a3b3c; /* Grigio scuro bot */
+       color: #e4e6eb;
+   }
+  .chatMessage.user {
+      background-color: var(--primary-color);
+      color: white;
+      margin-left: auto; /* Allinea a destra */
+  }
+  .telegramInputForm {
+      display: flex;
+      gap: 0.5rem;
+  }
+  .telegramInput {
+      flex-grow: 1;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+  }
+  .telegramSendButton {
+      padding: 0.4rem 0.8rem;
+      border: none;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+       transition: opacity 0.2s ease;
+  }
+   .telegramSendButton:hover { opacity: 0.9; }
+  
+  
+  /* Stili Display Fisico */
+  .displayContent {
+     background-color: #2b2b2b; /* Sfondo scuro tipo terminale */
+     color: #a9b7c6; /* Testo grigio chiaro */
+     padding: 0.8rem;
+     border-radius: 4px;
+     font-family: 'Consolas', 'Monaco', monospace;
+     font-size: 0.8rem;
+     white-space: pre; /* Mantiene spazi e a capo */
+     overflow-x: auto;
+     border: 4px solid #444; /* Bordo per simulare schermo */
+  }

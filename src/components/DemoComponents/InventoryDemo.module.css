@@ -1,0 +1,171 @@
+/* src/components/DemoComponents/InventoryDemo.module.css */
+
+.demoContainer {
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    background-color: var(--card-bg); /* Usa sfondo card per coerenza */
+    box-shadow: 0 2px 4px var(--shadow-color-light);
+  }
+  
+  .demoTitle {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  /* Stili Tabella */
+  .tableContainer {
+      overflow-x: auto; /* Permette scroll orizzontale su schermi piccoli */
+      margin-bottom: 2rem;
+  }
+  
+  .inventoryTable {
+    width: 100%;
+    border-collapse: collapse; /* Unisce i bordi delle celle */
+    font-size: 0.9rem;
+  }
+  
+  .inventoryTable th,
+  .inventoryTable td {
+    border: 1px solid var(--card-border);
+    padding: 0.6rem 0.8rem; /* Più padding */
+    text-align: left;
+    vertical-align: middle; /* Allinea verticalmente al centro */
+  }
+  
+  .inventoryTable th {
+    background-color: rgba(0, 0, 0, 0.03); /* Sfondo leggero per header */
+    font-weight: 600;
+    white-space: nowrap; /* Evita che i titoli vadano a capo */
+  }
+  body.dark .inventoryTable th {
+       background-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .inventoryTable tbody tr:nth-child(even) {
+     background-color: rgba(0, 0, 0, 0.015); /* Righe alternate leggere */
+  }
+   body.dark .inventoryTable tbody tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.03);
+  }
+  .inventoryTable tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+  }
+   body.dark .inventoryTable tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+  }
+  
+  
+  .emptyTable {
+      text-align: center;
+      color: var(--secondary-color);
+      font-style: italic;
+      padding: 1.5rem;
+  }
+  
+  /* Badge per lo Stato */
+  .statusBadge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px; /* Arrotondato */
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+      color: #fff; /* Testo bianco di base */
+  }
+  .statusInUse { background-color: #27ae60; } /* Verde */
+  .statusInStorage { background-color: #3498db; } /* Blu */
+  .statusNeedsRepair { background-color: #f39c12; } /* Arancio */
+  .statusDecommissioned { background-color: #7f8c8d; } /* Grigio */
+  
+  .deleteButton {
+    background: none;
+    border: none;
+    color: #e74c3c; /* Rosso per elimina */
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    transition: transform 0.2s ease;
+  }
+  .deleteButton:hover {
+     transform: scale(1.2);
+  }
+  
+  /* Stili Form */
+  .addForm {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--card-border);
+  }
+  
+  .formTitle {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .formRow {
+      display: flex;
+      flex-wrap: wrap; /* Va a capo su schermi piccoli */
+      gap: 1rem;
+      margin-bottom: 1rem;
+  }
+  
+  .formGroup {
+    flex: 1; /* Occupa spazio uguale */
+    min-width: 200px; /* Larghezza minima prima di andare a capo */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup label {
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+  
+  .formGroup input[type="text"],
+  .formGroup select {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: var(--bg-color); /* Usa sfondo base per input */
+    color: var(--text-color);
+     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .formGroup input[type="text"]:focus,
+  .formGroup select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb, 37, 99, 235), 0.2); /* Aggiungi un glow al focus */
+  }
+   /* Definisci --primary-color-rgb in :root se non l'hai già */
+   /* :root { --primary-color-rgb: 37, 99, 235; } */
+   /* body.dark { --primary-color-rgb: 96, 165, 250; } */
+  
+  
+  .addButton {
+    /* Usa la classe globale o stile specifico */
+    display: block; /* Occupa tutta la larghezza */
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .addButton:hover {
+     opacity: 0.9;
+  }
