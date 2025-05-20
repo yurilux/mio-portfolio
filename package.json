@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d dist" 
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist --repo https://github.com/yurilux/mio-portfolio.git"
   },
   "dependencies": {
     "framer-motion": "^12.9.1",
