@@ -1,0 +1,170 @@
+/* public/bionic-converter/style.css */
+
+/* --- Reset e Stili Globali --- */
+
+/* Variabili CSS per il tema chiaro */
+:root {
+    --converter-bg-color: #f8f9fa; /* Sfondo chiaro generale */
+    --converter-text-color: #333; /* Testo scuro generale */
+    --converter-header-color: #1a73e8; /* Colore intestazione H1 */
+    --converter-card-bg: #ffffff; /* Sfondo per header, controls, results */
+    --converter-card-shadow: rgba(0, 0, 0, 0.1); /* Ombra delle card */
+    --converter-button-primary-bg: #1a73e8; /* Sfondo pulsanti "Carica EPUB" */
+    --converter-button-primary-hover: #1558b0;
+    --converter-progress-bar-bg: #1a73e8; /* Sfondo barra di progresso */
+    --converter-progress-container-bg: #e0e0e0; /* Sfondo contenitore progresso */
+    --converter-download-button-bg: #34a853; /* Sfondo pulsante "Scarica" */
+    --converter-download-button-hover: #1e8e3e;
+    --converter-status-text-color: #555; /* Colore testo stato */
+    --converter-error-text-color: #d93025; /* Colore testo errore */
+}
+
+/* Variabili CSS per il tema scuro (quando body ha la classe 'dark') */
+body.dark {
+    --converter-bg-color: #1a1a1a; /* Sfondo scuro generale */
+    --converter-text-color: #e0e0e0; /* Testo chiaro generale */
+    --converter-header-color: #60a5fa; /* Colore intestazione H1 (più chiaro) */
+    --converter-card-bg: #2d2d2d; /* Sfondo scuro per le card */
+    --converter-card-shadow: rgba(0, 0, 0, 0.4); /* Ombra più scura */
+    --converter-button-primary-bg: #60a5fa; /* Sfondo pulsanti (più chiaro) */
+    --converter-button-primary-hover: #3b82f6;
+    --converter-progress-bar-bg: #60a5fa; /* Sfondo barra di progresso (più chiaro) */
+    --converter-progress-container-bg: #555; /* Sfondo contenitore progresso (più scuro) */
+    --converter-download-button-bg: #2ecc71; /* Sfondo pulsante "Scarica" (più chiaro) */
+    --converter-download-button-hover: #27ae60;
+    --converter-status-text-color: #b0b0b0; /* Colore testo stato (più chiaro) */
+    --converter-error-text-color: #e74c3c; /* Colore testo errore (più brillante) */
+}
+
+/* Applica le variabili ai selettori esistenti */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--converter-bg-color); /* Usa variabile */
+    color: var(--converter-text-color); /* Usa variabile */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center; /* Centra i blocchi principali */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transizione per tema */
+}
+
+h1 {
+    color: var(--converter-header-color); /* Usa variabile */
+}
+
+h2 {
+    color: var(--converter-text-color); /* Usa variabile (puoi usare header-color se preferisci) */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* --- Layout Principale --- */
+header,
+#controls,
+#results {
+    width: 90%;
+    max-width: 600px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background-color: var(--converter-card-bg); /* Usa variabile */
+    box-shadow: 0 2px 5px var(--converter-card-shadow); /* Usa variabile */
+    border-radius: 8px;
+    text-align: center;
+}
+
+header {
+    background-color: transparent;
+    box-shadow: none;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Sezione Controlli (Upload) --- */
+.file-label {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--converter-button-primary-bg); /* Usa variabile */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+}
+
+.file-label:hover {
+    background-color: var(--converter-button-primary-hover); /* Usa variabile */
+}
+
+#epubFile {
+    display: none;
+}
+
+.status-text {
+     margin-top: 1rem;
+     font-style: italic;
+     color: var(--converter-status-text-color); /* Usa variabile */
+     min-height: 1.2em;
+}
+.status-text.error {
+    color: var(--converter-error-text-color); /* Usa variabile */
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* --- Sezione Risultati (Progresso e Download) --- */
+/* Barra di Progresso */
+#progress-container {
+    width: 100%;
+    height: 20px;
+    background-color: var(--converter-progress-container-bg); /* Usa variabile */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--converter-progress-bar-bg); /* Usa variabile */
+    border-radius: 10px 0 0 10px;
+    transition: width 0.3s ease-out;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+#progress-bar.completed {
+    border-radius: 10px;
+}
+
+/* Pulsante (generico e download) */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--converter-download-button-bg); /* Usa variabile */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-top: 1.5rem;
+}
+
+.button:hover {
+    background-color: var(--converter-download-button-hover); /* Usa variabile */
+}
+
+.button.hidden {
+    display: none;
+}
+
+/* --- Classi Utility --- */
+.hidden {
+    display: none !important;
+}

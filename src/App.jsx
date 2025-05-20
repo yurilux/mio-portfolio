@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react'; // Importa useState e useEffect
 // Importa Routes, Route, e NavLink per la navigazione attiva
 import { Routes, Route, NavLink, Link, useLocation } from 'react-router-dom'; // Importa useLocation
@@ -10,6 +11,7 @@ import SkillsPage from './pages/SkillsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import useTheme from './hooks/useTheme';
 import styles from './App.module.css'; // Importa gli stili del modulo
+import BionicConverterPage from './pages/BionicConverterPage'; // <--- AGGIUNTA QUESTA LINEA
 import { motion, AnimatePresence } from 'framer-motion'; // Importa per animazioni menu
 
 function App() {
@@ -110,6 +112,7 @@ function App() {
           <Route path="/chi-sono" element={<AboutPage />} />
           <Route path="/contatti" element={<ContactPage />} />
           <Route path="/competenze" element={<SkillsPage />} />
+          <Route path="/bionic-converter" element={<BionicConverterPage />} /> {/* <--- AGGIUNTA QUESTA LINEA */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

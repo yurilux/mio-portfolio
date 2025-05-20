@@ -1,3 +1,4 @@
+// src/components/Timeline/TimelineItem.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -6,8 +7,10 @@ import styles from './TimelineItem.module.css'; // Importa il CSS Module
 function TimelineItem({ item, index }) {
   // Determina l'URL corretto in base al tipo
   let url;
-  if (item.type === 'experience' || item.type === 'education') {
-    url = `/esperienze/${item.id}`; // Usiamo lo stesso route per esperienze/educazione
+  if (item.url) { // <--- AGGIUNTA QUESTA CONDIZIONE PER DARE PRIORITÀ A item.url
+    url = item.url;
+  } else if (item.type === 'experience' || item.type === 'education') {
+    url = `/esperienze/${item.id}`;
   } else if (item.type === 'project') {
     url = `/progetti/${item.id}`;
   } else {

@@ -1,12 +1,51 @@
-# React + Vite
+// README.md
+# Mio Portfolio - Iulian Bottale
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Questo è il codice sorgente del mio portfolio personale, costruito con React e Vite.
+Il sito è deployato su GitHub Pages: [https://yurilux.github.io/mio-portfolio/](https://yurilux.github.io/mio-portfolio/)
 
-Currently, two official plugins are available:
+## Tecnologie Utilizzate
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   React 19
+*   Vite
+*   React Router
+*   Framer Motion (per animazioni)
+*   CSS Modules
+*   ESLint
 
-## Expanding the ESLint configuration
+## Setup Locale
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  Clona il repository:
+    ```bash
+    git clone https://github.com/yurilux/mio-portfolio.git
+    cd mio-portfolio
+    ```
+2.  Installa le dipendenze:
+    ```bash
+    npm install
+    ```
+3.  Avvia il server di sviluppo:
+    ```bash
+    npm run dev
+    ```
+
+## Script Disponibili
+
+*   `npm run dev`: Avvia il server di sviluppo.
+*   `npm run build`: Compila l'applicazione per la produzione.
+*   `npm run lint`: Esegue ESLint per controllare il codice.
+*   `npm run preview`: Avvia un server locale per visualizzare la build di produzione.
+*   `npm run deploy`: Esegue il deploy su GitHub Pages (dopo `predeploy` che fa il build).
+
+## Struttura del Progetto
+
+*   `src/components`: Componenti React riutilizzabili.
+    *   `src/components/DemoComponents`: Componenti demo interattivi.
+    *   `src/components/Timeline`: Componenti per la timeline.
+*   `src/pages`: Componenti per le diverse pagine del sito.
+*   `src/data`: Dati statici (es. `timelineData.js`).
+*   `src/hooks`: Custom hooks (es. `useTheme.js`).
+*   `src/assets`: Immagini statiche e altre risorse.
+*   `public`: File statici che vengono copiati direttamente nella directory di build.
+
+## ... (Altre sezioni che potresti voler aggiungere) ...

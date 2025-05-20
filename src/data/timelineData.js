@@ -68,5 +68,15 @@ export const timelineItems = [
       description: 'Sviluppo di un sistema IoT con ESP32, sensori a ultrasuoni e web server per il monitoraggio remoto del livello idrometrico di un fiume.',
       icon: '🌊',
     },
+    {
+      id: 'epub-bionic-converter', // <--- NUOVO PROGETTO
+      type: 'project',
+      title: 'EPUB Bionic Converter',
+      source: 'Strumento Personale', // Categoria
+      period: '2024',
+      description: 'Un tool web per convertire file EPUB in formato Bionic Reading, con elaborazione interamente client-side.',
+      icon: '📖',
+      url: '/bionic-converter' // <--- PUNTA DIRETTAMENTE ALLA NUOVA PAGINA
+    },
   ];
   
