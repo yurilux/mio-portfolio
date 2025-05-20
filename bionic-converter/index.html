@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPUB Bionic Converter</title>
+    <!-- Collegamento al file CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Inclusione SOLO di JSZip -->
+    <script src="jszip.min.js"></script>
+</head>
+<body>
+
+    <!-- Intestazione -->
+    <header>
+        <h1>EPUB Bionic Converter</h1>
+        <p>Carica un file EPUB per convertirlo in modalità Bionic Reading.</p>
+        <p>L'elaborazione avviene interamente nel tuo browser.</p>
+    </header>
+
+    <!-- Sezione di Controllo (Upload) -->
+    <section id="controls">
+        <label for="epubFile" class="file-label">
+            Carica EPUB
+            <input type="file" id="epubFile" accept=".epub">
+        </label>
+        <div id="file-name-display" class="status-text">Nessun file selezionato</div>
+    </section>
+
+    <!-- Sezione Risultati (Progresso e Download) -->
+    <section id="results" class="hidden">
+        <h2>Elaborazione</h2>
+        <!-- Barra di Progresso -->
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="progress-text" class="status-text">In attesa...</div>
+
+        <!-- Pulsante Download (mostrato alla fine) -->
+        <a id="download-button" class="button hidden" download="bionic_converted_book.epub">
+            Scarica EPUB Convertito
+        </a>
+         <div id="error-message" class="status-text error hidden"></div>
+    </section>
+
+    <!-- Collegamento al file JavaScript principale -->
+    <script src="script.js"></script>
+</body>
+</html>
