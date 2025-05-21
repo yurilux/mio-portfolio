@@ -73,7 +73,7 @@ export const timelineItems = [
       type: 'project',
       title: 'EPUB Bionic Converter',
       source: 'Strumento Personale', // Categoria
-      period: '2024',
+      period: '2025',
       description: 'Un tool web per convertire file EPUB in formato Bionic Reading, con elaborazione interamente client-side.',
       icon: '📖',
       url: '/bionic-converter' // <--- PUNTA DIRETTAMENTE ALLA NUOVA PAGINA
